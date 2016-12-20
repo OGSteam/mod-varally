@@ -98,7 +98,7 @@ function affStats ( $field, $player ) {
 	switch ($field) {
 		case 'points': $table = TABLE_RANK_PLAYER_POINTS; break;
 		case 'fleet': $table = TABLE_RANK_PLAYER_MILITARY; break;
-		case 'research': $table = TABLE_RANK_PLAYER_RESEARCH; break;
+		case 'research': $table = TABLE_RANK_PLAYER_TECHNOLOGY; break;
 	}
 
 	$query = 'SELECT `points` FROM `'.$table.'` WHERE `player`=\''.$player.'\' ORDER BY `datadate` DESC LIMIT 2';
