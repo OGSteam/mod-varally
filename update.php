@@ -13,7 +13,7 @@ global $db;
 
 $mod_folder = "varally";
 $mod_name = "varally";
-update_mod 	($mod_folder,$mod_name);
+update_mod($mod_folder,$mod_name);
 
 $queries = array();
 
@@ -26,4 +26,4 @@ $queries[] = 'INSERT IGNORE INTO '.TABLE_MOD_CFG.' (`mod`,`config`, `value`) VAL
 foreach ($queries as $query) {
 	$db->sql_query($query);
 }
-?>
+

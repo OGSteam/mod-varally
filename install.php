@@ -30,4 +30,4 @@ else
 	{
 		echo  "<script>alert('Désolé, un problème a eu lieu pendant l'installation, corrigez les problèmes survenue et réessayez.');</script>";
 	}
-?>
+
