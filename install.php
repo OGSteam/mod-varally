@@ -4,7 +4,7 @@
 * Install du module
 * @package varAlly
 * @author Aeris
-* @link http://ogsteam.fr
+* @link https://ogsteam.eu
 * @version 1.0.0
  */
 if (!defined('IN_SPYOGAME')) die('Hacking attempt');

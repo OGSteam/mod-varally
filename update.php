@@ -5,7 +5,7 @@
 * @package varAlly
 * @author Aeris
 * @version 1.0.0
-* @link http://ogsteam.fr
+* @link https://ogsteam.eu
  */
 define('IN_SPYOGAME', true);
 include('./parameters/id.php');

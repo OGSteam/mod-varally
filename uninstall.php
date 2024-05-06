@@ -3,7 +3,7 @@
 * Desinstallation du module
 * @package varAlly
 * @author Aeris
-* @link http://ogsteam.fr
+* @link https://ogsteam.eu
  */
 if (!defined('IN_SPYOGAME')) die('Hacking attempt'); 
 include('./parameters/id.php');
