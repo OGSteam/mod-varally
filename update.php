@@ -8,7 +8,7 @@
 * @link https://ogsteam.eu
  */
 define('IN_SPYOGAME', true);
-include('./parameters/id.php');
+include('./config/id.php');
 global $db;
 
 $mod_folder = "varally";
@@ -26,4 +26,3 @@ $queries[] = 'INSERT IGNORE INTO '.TABLE_MOD_CFG.' (`mod`,`config`, `value`) VAL
 foreach ($queries as $query) {
 	$db->sql_query($query);
 }
-

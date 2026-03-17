@@ -5,8 +5,8 @@
 * @author Aeris
 * @link https://ogsteam.eu
  */
-if (!defined('IN_SPYOGAME')) die('Hacking attempt'); 
-include('./parameters/id.php');
+if (!defined('IN_SPYOGAME')) die('Hacking attempt');
+include('./config/id.php');
 global $db,$table_prefix;
 
 $mod_uninstall_name = "nom du mode";
@@ -16,8 +16,8 @@ uninstall_mod($mod_uninstall_name,$mod_uninstall_table);
 
 $queries = array();
 $queries[] = 'DELETE FROM `'.TABLE_MOD_CFG.'` WHERE `mod`=\'varally\'';
-			 
-											 
+
+
 foreach ($queries as $query) {
 	$db->sql_query($query);
 }

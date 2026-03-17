@@ -11,7 +11,7 @@ if (!defined('IN_SPYOGAME')) die('Hacking attempt');
 /**
  *
  */
-require_once('./parameters/id.php');
+require_once('./config/id.php');
 
 
 $sql = 'SELECT `value` FROM `'.TABLE_MOD_CFG.'` WHERE `config`=\'tblAlly\'';
@@ -25,7 +25,7 @@ list($tblSpy)=$db->sql_fetch_row($result);
 
 /**
  * AutoPub
- */ 
+ */
 function page_footer() {
 global $db;
 
@@ -66,16 +66,16 @@ global $tblSpy;
 		}
 
 		//Bouton Administration
-		if ($user_data['user_admin'] == 1 || $user_data['user_coadmin'] == 1) if ($pub_subaction != 'admin')
+		if ($user_data['user_admin'] == 1 || $user_data['coadmin'] == 1) if ($pub_subaction != 'admin')
 		{
 			echo '<td class=\'c\' width=\'150\' onclick="window.location =\'?action=varAlly&subaction=admin\'"><a style=\'cursor:pointer\'><font color=\'lime\'>Administration</font></a></td>';
 		} else {
 				echo '<th width=\'150\'><a>Administration</a></th>';
 		}
-		
+
 ?>
 		</tr>
-	</table>		
+	</table>
 <?php
 }
 
@@ -104,7 +104,7 @@ function affStats ( $field, $player ) {
 	$query = 'SELECT `points` FROM `'.$table.'` WHERE `player`=\''.$player.'\' ORDER BY `datadate` DESC LIMIT 2';
 	$result = $db->sql_query($query);
 	$nb = $db->sql_numrows($result);
-	
+
 	switch ($nb) {
 		case 0; echo '<th colspan=\'2\'> - </th>'; break;
 		case 1; (double)$val = $db->sql_fetch_assoc($result); echo '<th>? -> '.$val['points'].'</th><th>n/a</th>'; break;
@@ -117,7 +117,7 @@ function affStats ( $field, $player ) {
 
 function affPoints ( $player, $where ) {
 	global $db;
-	
+
 	if ($where <> '')
 	{
 		$query = 'SELECT min(`datadate`) AS `min`, max(`datadate`) as `max` FROM `'.TABLE_VARALLY.'` WHERE `player`=\''.$player.'\''.$where;
@@ -137,17 +137,17 @@ function affPoints ( $player, $where ) {
 		case 0; echo '<th colspan=\'2\'> - </th>'; break;
 		case 1; (double)$val = $db->sql_fetch_assoc($result); echo '<th>'.$val['points'].'</th><th>n/a</th>'; break;
 		case 2; (double)$val = $db->sql_fetch_assoc($result); $new = number_format($val['points'],0,'',''); $val = $db->sql_fetch_assoc($result); $ex = number_format($val['points'],0,'','');
-		    $ecart = $new - $ex; 
-		    $pourcent = round(100*$ecart/$ex,2);        
+		    $ecart = $new - $ex;
+		    $pourcent = round(100*$ecart/$ex,2);
 
-		    global $tblecart; 
-		    $tblecart[] = array( "joueur" => $player, "pts" => $ecart, "prc" => $pourcent );        
+		    global $tblecart;
+		    $tblecart[] = array( "joueur" => $player, "pts" => $ecart, "prc" => $pourcent );
 
-		    if ($ecart<0) { $color='red'; } elseif ($ecart>0) { $color='lime'; $ecart = '+'.$ecart; $pourcent = '+'.$pourcent; } else { $color=''; }        
+		    if ($ecart<0) { $color='red'; } elseif ($ecart>0) { $color='lime'; $ecart = '+'.$ecart; $pourcent = '+'.$pourcent; } else { $color=''; }
 
 		    echo '<th>'.$ex.' -> '.$new.' (<font color=\''.$color.'\'>'.$ecart.'</font>)</th><th><font color=\''.$color.'\'>'.$pourcent.'%</font></th>'; break;
 		default; echo '<th colspan=\'2\'> - Error - </th>'; break;
-	}	
+	}
 }
 
 function parseDate ( $date ) {

@@ -8,7 +8,7 @@
 * @version 1.0.0
  */
 if (!defined('IN_SPYOGAME')) die('Hacking attempt');
-include('./parameters/id.php');
+include('./config/id.php');
 global $db;
 $is_ok = false;
 $mod_folder = "varally";
@@ -30,4 +30,3 @@ else
 	{
 		echo  "<script>alert('Désolé, un problème a eu lieu pendant l'installation, corrigez les problèmes survenue et réessayez.');</script>";
 	}
-
